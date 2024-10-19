@@ -1,10 +1,12 @@
 import { getSheetData } from "./action/getSheetData";
+import CarbonBadge from "./components/carbonbadge";
 import Card from "./components/card/card";
 
 export default async function Page() {
   const data = await getSheetData();
   return (
     <div>
+      <CarbonBadge />
       {data.data.map((item, i) => {
         if (i === 0) {
           return <div key={i}></div>;

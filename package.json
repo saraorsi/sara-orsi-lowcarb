@@ -12,6 +12,7 @@
     "googleapis": "^144.0.0",
     "next": "14.2.15",
     "react": "^18",
+    "react-carbonbadge": "^2.0.0",
     "react-dom": "^18"
   },
   "devDependencies": {
