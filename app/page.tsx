@@ -1,30 +1,36 @@
 import { getSheetData } from "./action/getSheetData";
-import CarbonBadge from "./components/carbonbadge";
-import Card from "./components/card/card";
+import Card from "./components/card";
+
+interface DataItem {
+  [key: number]: string;
+}
 
 export default async function Page() {
   const data = await getSheetData();
+
+  const sortedData = data.data.slice(1).sort((a: DataItem, b: DataItem) => {
+    const dateA = new Date(a[0].split("/").reverse().join("-"));
+    const dateB = new Date(b[0].split("/").reverse().join("-"));
+    return dateB.getTime() - dateA.getTime();
+  });
+
   return (
-    <div>
-      <CarbonBadge />
-      {data.data.map((item, i) => {
-        if (i === 0) {
-          return <div key={i}></div>;
-        } else {
-          return (
-            <Card
-              key={i}
-              date={item[0]}
-              title={item[1]}
-              exercept={item[2]}
-              type={item[3]}
-              categories={item[4]}
-              tags={item[5]}
-              link={item[6]}
-            />
-          );
-        }
+    <>
+      {sortedData.map((item, i) => {
+        return (
+          <Card
+            key={i}
+            date={item[0]}
+            title={item[1]}
+            excerpt={item[2]}
+            types={item[3]}
+            categories={item[4]}
+            tags={item[5]}
+            thumb={item[6]}
+            link={item[7]}
+          />
+        );
       })}
-    </div>
+    </>
   );
 }

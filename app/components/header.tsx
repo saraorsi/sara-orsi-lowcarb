@@ -1,10 +1,10 @@
 export default function Header() {
   return (
     <header>
-      <div>Sara Orsi ↪ Web & Research</div>
+      <div className="logo">Sara Orsi ↪ Web & Research</div>
       <nav>
         <ul>
-          <li>about</li>
+          <li>under live construction</li>
         </ul>
       </nav>
     </header>
