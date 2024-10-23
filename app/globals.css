@@ -12,9 +12,12 @@
   --link-color: #0000ff;
 }
 
+.hidden {
+  display: none; /* This will hide the element */
+}
+
 html,
 body {
-  overflow-x: hidden;
 }
 
 body {
@@ -130,7 +133,7 @@ main {
 .card {
   position: relative;
   display: flex;
-  padding: 1rem 1rem 1rem 0.5rem;
+  padding: 1rem 0.5rem 1rem 0.5rem;
   border-bottom: 1px solid var(--primary-color);
   min-height: 10rem;
   transition: transform 0.7s ease, height 0.7s ease, min-height 0.7s ease,
@@ -311,4 +314,66 @@ main {
   .loading {
     backdrop-filter: blur(6px);
   }
+}
+
+.filter {
+  position: sticky;
+  top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 1rem 0.8rem;
+  z-index: 100;
+}
+
+.filter button {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 2rem;
+  background-color: var(--background-color);
+  font-size: 0.85rem;
+  color: var(--primary-color);
+}
+
+.filter button:nth-child(2),
+.filter button:nth-child(3) {
+  border-radius: 0;
+}
+
+.filter button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.filter button.active {
+  background-color: var(--link-color);
+  color: var(--background-color);
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.3rem;
+  padding: 0 1rem 1rem;
+  font-size: 0.85rem;
+}
+
+.filter-tags button {
+  background: transparent;
+  border: 0;
+  padding: 0 0.15rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.filter-tags button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.filter-tags button.active {
+  background-color: var(--link-color);
+  color: var(--background-color);
 }

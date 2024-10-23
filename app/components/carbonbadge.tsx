@@ -1,18 +1,34 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function CarbonBadge() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    // Assuming that the `wcb` is initialized by some external script,
-    // You can use this effect to trigger that script after the component mounts.
-    if (typeof window !== "undefined") {
-      const script = document.createElement("script");
-      script.src = "https://unpkg.com/website-carbon-badges@^1/b.min.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/website-carbon-badges@1.1.3/b.min.js";
+    script.async = true;
+
+    script.onload = () => setIsLoaded(true); // Set loaded state on script load
+
+    // Append the script to the body
+    document.body.appendChild(script);
+
+    // Cleanup function to remove the script when the component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
-  return <div id="wcb" className="carbonbadge wcb-d"></div>;
+  return (
+    <div>
+      {!isLoaded && <p>Loading carbon badge...</p>}
+      <div
+        id="wcb"
+        className="carbonbadge wcb-d"
+        style={{ display: isLoaded ? "block" : "none" }}
+      />
+    </div>
+  );
 }

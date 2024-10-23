@@ -24,17 +24,9 @@ export default function Card({
     ? excerpt.replace(/(\r\n|\n|\r)/gm, "")
     : "";
   const typesArray = types ? types.split(",").map((type) => type.trim()) : [];
-  const tagsArray = tags
-    ? tags
-        .split(",")
-        .map((tag) => tag.trim())
-        .sort()
-    : [];
+  const tagsArray = tags ? tags.split(",").map((tag) => tag.trim()) : [];
   const categoriesArray = categories
-    ? categories
-        .split(",")
-        .map((category) => category.trim())
-        .sort()
+    ? categories.split(",").map((category) => category.trim())
     : [];
   return (
     <article className="card">
@@ -59,7 +51,7 @@ export default function Card({
         {link && (
           <div className="link">
             <a href={link} target="_blank">
-              Visit the website
+              visit website
             </a>
           </div>
         )}
@@ -67,13 +59,13 @@ export default function Card({
       <div className="labels">
         {typesArray &&
           typesArray.map((item, i) => (
-            <span className="type" key={i}>
+            <span className="label type" key={i}>
               {item}
             </span>
           ))}
         {categoriesArray &&
           categoriesArray.map((item, i) => (
-            <span className="category" key={i}>
+            <span className="label category" key={i}>
               {item}
             </span>
           ))}
