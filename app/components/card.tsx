@@ -30,11 +30,6 @@ export default function Card({
     : [];
   return (
     <article className="card">
-      {/* {thumb && (
-        <div className="image">
-          <img src={`https://saraorsi.com/images/${thumb}`} alt={title} />
-        </div>
-      )} */}
       <div className="year">{year}</div>
       <div className="title">{title}</div>
       <div className="excerpt">
